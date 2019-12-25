@@ -1,0 +1,61 @@
+/* Top Level Styles Start */
+* {
+  font-family: "Franklin Gothic Medium", sans-serif;
+}
+.content {
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+/* Top Level Styles End */
+
+/* Content Styles Start */
+.content > .name {
+  font-size: 50px;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 10px;
+}
+
+.content > .subheading {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.content > .description {
+  font-size: 16px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Content Styles End */
+
+/* Card Styles Start */
+.card {
+  width: 100%;
+  box-shadow: 0px 0px 4px 2px lightgray;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.card > .data {
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-template-rows: 200px;
+}
+.card > .data > .icon {
+  grid-column: 1/2;
+  display: flex;
+  justify-content: flex-end;
+}
+.card > .data > .icon > img {
+  height: 100px;
+}
+.card > .data > .info {
+  text-align: left;
+}
+/* Card Styles End */
