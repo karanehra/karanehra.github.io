@@ -46,16 +46,26 @@
   display: grid;
   grid-template-columns: 200px auto;
   grid-template-rows: 200px;
+  margin: 10px 0;
 }
 .card > .data > .icon {
   grid-column: 1/2;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .card > .data > .icon > img {
   height: 100px;
 }
 .card > .data > .info {
   text-align: left;
+  border-left: 2px solid lightgray;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card > .data > .info > .heading {
+  font-size: 24px;
+  font-weight: bold;
 }
 /* Card Styles End */
