@@ -46,16 +46,16 @@
   display: grid;
   grid-template-columns: 200px auto;
   grid-template-rows: 200px;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .card > .data > .icon {
   grid-column: 1/2;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
 .card > .data > .icon > img {
-  height: 100px;
+  width: 60%;
 }
 .card > .data > .info {
   text-align: left;
