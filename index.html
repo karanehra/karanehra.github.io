@@ -19,7 +19,7 @@
 
 <body>
   <div class="content">
-    <div class="name">Karan Nehra</div>
+    <div class="name">Karan N<span id="e-span">e</span>hra</div>
     <div class="subheading">Serial Programmer</div>
     <div class="description">
       Solving problems through code, creating more problems than I originally had. <br>
@@ -130,7 +130,13 @@
     </div>
 
   </div>
-
+  <script>
+    let span = document.getElementById("e-span")
+    setInterval(() => {
+      span.classList.add('span-r')
+      console.log("o")
+    }, 1000)
+  </script>
 </body>
 
 </html>
