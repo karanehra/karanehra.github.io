@@ -1,0 +1,28 @@
+{
+  "name": "karanehra.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --validate --sourceMap --debug",
+    "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --validate --sourceMap --optimize",
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karanehra/karanehra.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karanehra/karanehra.github.io/issues"
+  },
+  "homepage": "https://github.com/karanehra/karanehra.github.io#readme",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.9.4"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.9.4"
+  }
+}
