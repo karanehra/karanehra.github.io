@@ -9,21 +9,14 @@ function setupData(res) {
   console.log(wasmExports);
 }
 
-function add(a, b) {
-  console.log(wasmExports.add(a, b));
-}
-
-function getRandomInt() {
-  console.log(wasmExports.getRandomInt());
-}
-
 let cvs = document.getElementById("cvs");
 let ctx = cvs.getContext("2d");
+
 let { width, height } = cvs.getBoundingClientRect();
-console.log(width, height);
+
+ctx.imageSmoothingEnabled = false;
 
 let size = width * height;
-ctx.imageSmoothingEnabled = false;
 let imageData = ctx.createImageData(width, height);
 let mem = new Uint32Array(imageData.data.buffer);
 let i = 0,
@@ -38,3 +31,5 @@ let i = 0,
   }
   ctx.putImageData(imageData, 0, 0); // apply image buffer
 })();
+
+module.exports = { setupData };

@@ -1,3 +1,4 @@
+const main = require("./main");
 const importObject = {
   env: {
     abort(_msg, _file, line, column) {
@@ -10,5 +11,5 @@ WebAssembly.instantiateStreaming(
   fetch("build/untouched.wasm"),
   importObject
 ).then((res) => {
-  setupData(res);
+  main.setupData(res);
 });

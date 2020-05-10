@@ -8,6 +8,8 @@
     "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --validate --sourceMap --debug",
     "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --validate --sourceMap --optimize",
     "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "browserbuild": "browserify src/index.js -o build/bundle.js",
+    "prestart": "npm run browserbuild",
     "start": "npm run asbuild",
     "poststart": "python3 -m http.server"
   },
@@ -22,7 +24,8 @@
   },
   "homepage": "https://github.com/karanehra/karanehra.github.io#readme",
   "dependencies": {
-    "@assemblyscript/loader": "^0.9.4"
+    "@assemblyscript/loader": "^0.9.4",
+    "browserify": "^16.5.1"
   },
   "devDependencies": {
     "assemblyscript": "^0.9.4"
