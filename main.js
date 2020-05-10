@@ -26,15 +26,13 @@ let size = width * height;
 ctx.imageSmoothingEnabled = false;
 let imageData = ctx.createImageData(width, height);
 let mem = new Uint32Array(imageData.data.buffer);
-console.log(mem);
 let i = 0,
   j = 0;
 (function render() {
   requestAnimationFrame(render);
   mem.set([0xff00ffff], i + j * width);
-  console.log(i, width);
   i++;
-  if (i > width / 3) {
+  if (i > width) {
     i = 0;
     j++;
   }
