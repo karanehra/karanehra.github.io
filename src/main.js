@@ -14,6 +14,11 @@ let ctx = cvs.getContext("2d");
 
 let { width, height } = cvs.getBoundingClientRect();
 
+let totalPixels = width * height;
+let currentPaintMemory = totalPixels << 2;
+let totalPixelMemory = currentPaintMemory << 1;
+console.log(totalPixelMemory);
+
 ctx.imageSmoothingEnabled = false;
 
 let size = width * height;
