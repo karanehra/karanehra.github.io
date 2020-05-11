@@ -6,7 +6,7 @@ let currentPaintMemory = totalPixels << 2;
 let totalPixelMemory = currentPaintMemory << 1;
 
 //>>>16 converts bytes to number of mempages of 64k each
-let wasmMemory = new WebAssembly.Memory({ initial: totalPixelMemory >>> 16 });
+let wasmMemory = new WebAssembly.Memory({ initial: 1000 });
 
 const importObject = {
   env: {

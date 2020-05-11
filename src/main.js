@@ -9,6 +9,7 @@ let wasmExports;
 function setupData(res) {
   wasmExports = res.instance.exports;
   wasmExports.init(width, height);
+  wasmExports.populate();
   console.log(wasmExports);
 }
 // ctx.imageSmoothingEnabled = false;
