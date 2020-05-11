@@ -1,3 +1,5 @@
+const { ctx, width, height } = require("./canvas");
+const { wasmMemory } = require("./index");
 let wasmExports;
 
 /**
@@ -6,35 +8,27 @@ let wasmExports;
  */
 function setupData(res) {
   wasmExports = res.instance.exports;
+  wasmExports.init(width, height);
   console.log(wasmExports);
 }
+// ctx.imageSmoothingEnabled = false;
 
-let cvs = document.getElementById("cvs");
-let ctx = cvs.getContext("2d");
+// let imageData = ctx.createImageData(width, height);
+// let memoryBufferArray = new Uint32Array(wasmMemory.buffer);
+// let imageBufferArray = new Uint32Array(imageData.data.buffer);
 
-let { width, height } = cvs.getBoundingClientRect();
+// let i = 0;
+// let j = 0;
 
-let totalPixels = width * height;
-let currentPaintMemory = totalPixels << 2;
-let totalPixelMemory = currentPaintMemory << 1;
-console.log(totalPixelMemory);
-
-ctx.imageSmoothingEnabled = false;
-
-let size = width * height;
-let imageData = ctx.createImageData(width, height);
-let mem = new Uint32Array(imageData.data.buffer);
-let i = 0,
-  j = 0;
-(function render() {
-  requestAnimationFrame(render);
-  mem.set([0xff00ffff], i + j * width);
-  i++;
-  if (i > width) {
-    i = 0;
-    j++;
-  }
-  ctx.putImageData(imageData, 0, 0); // apply image buffer
-})();
+// (function render() {
+//   requestAnimationFrame(render);
+//   imageBufferArray.set(memoryBufferArray.subarray(0, width * height));
+//   // i++;
+//   // if (i > width) {
+//   //   i = 0;
+//   //   j++;
+//   // }
+//   ctx.putImageData(imageData, 0, 0); // apply image buffer
+// })();
 
 module.exports = { setupData };

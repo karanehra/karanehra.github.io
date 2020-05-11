@@ -1,18 +1,9 @@
 const main = require("./main");
-
-let cvs = document.getElementById("cvs");
-let ctx = cvs.getContext("2d");
-
-let { width, height } = cvs.getBoundingClientRect();
+const { ctx, width, height } = require("./canvas");
 
 let totalPixels = width * height;
 let currentPaintMemory = totalPixels << 2;
 let totalPixelMemory = currentPaintMemory << 1;
-console.log(
-  totalPixelMemory,
-  totalPixelMemory + 0xffff,
-  (totalPixelMemory + 0xffff) & ~0xffff
-);
 
 //>>>16 converts bytes to number of mempages of 64k each
 let wasmMemory = new WebAssembly.Memory({ initial: totalPixelMemory >>> 16 });
@@ -26,6 +17,25 @@ const importObject = {
   },
   Math,
 };
+
+let imageData = ctx.createImageData(width, height);
+let memoryBufferArray = new Uint32Array(wasmMemory.buffer);
+let imageBufferArray = new Uint32Array(imageData.data.buffer);
+
+let i = 0;
+let j = 0;
+
+(function render() {
+  requestAnimationFrame(render);
+  imageBufferArray.set(memoryBufferArray.subarray(0, width * height));
+  // i++;
+  // if (i > width) {
+  //   i = 0;
+  //   j++;
+  // }
+  ctx.putImageData(imageData, 0, 0); // apply image buffer
+})();
+
 WebAssembly.instantiateStreaming(
   fetch("build/untouched.wasm"),
   importObject
