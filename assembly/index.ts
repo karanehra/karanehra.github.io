@@ -16,7 +16,7 @@ export function init(w: i32, h: i32): void {
 export function populate(): void {
   for (let i = 0; i < width; i++) {
     for (let j = 0; j < height; j++) {
-      store<u32>((i + j * width) << 2, 0xff00ffff);
+      store<u32>((i + j * width) << 2, 0xff);
     }
   }
 }

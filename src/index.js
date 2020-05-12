@@ -22,23 +22,10 @@ let imageData = ctx.createImageData(width, height);
 let memoryBufferArray = new Uint32Array(wasmMemory.buffer);
 let imageBufferArray = new Uint32Array(imageData.data.buffer);
 
-let i = 0;
-let j = 0;
-
-(function render() {
-  requestAnimationFrame(render);
-  imageBufferArray.set(memoryBufferArray.subarray(0, width * height));
-  // i++;
-  // if (i > width) {
-  //   i = 0;
-  //   j++;
-  // }
-  ctx.putImageData(imageData, 0, 0); // apply image buffer
-})();
-
 WebAssembly.instantiateStreaming(
   fetch("build/untouched.wasm"),
   importObject
 ).then((res) => {
-  main.setupData(res);
+  // res.instance.exports.populate();
+  console.log(memoryBufferArray);
 });
