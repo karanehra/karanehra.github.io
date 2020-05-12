@@ -6,7 +6,9 @@ let currentPaintMemory = totalPixels << 2;
 let totalPixelMemory = currentPaintMemory << 1;
 
 //>>>16 converts bytes to number of mempages of 64k each
-let wasmMemory = new WebAssembly.Memory({ initial: 1000 });
+let wasmMemory = new WebAssembly.Memory({
+  initial: 1000,
+});
 
 const importObject = {
   env: {
@@ -26,6 +28,7 @@ WebAssembly.instantiateStreaming(
   fetch("build/untouched.wasm"),
   importObject
 ).then((res) => {
-  // res.instance.exports.populate();
-  console.log(memoryBufferArray);
+  res.instance.exports.init(width, height);
+  res.instance.exports.populate();
+  setTimeout(() => console.log(memoryBufferArray), 2000);
 });
