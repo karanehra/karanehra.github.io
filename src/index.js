@@ -19,6 +19,7 @@ const importObject = {
   },
   Math,
 };
+let exportsObj;
 
 let imageData = ctx.createImageData(width, height);
 let memoryBufferArray = new Uint32Array(wasmMemory.buffer);
@@ -28,7 +29,36 @@ WebAssembly.instantiateStreaming(
   fetch("build/untouched.wasm"),
   importObject
 ).then((res) => {
+  exportsObj = res.instance.exports;
   res.instance.exports.init(width, height);
-  res.instance.exports.populate();
+  render();
+  document.addEventListener("keydown", handleKeyDown);
   setTimeout(() => console.log(memoryBufferArray), 2000);
 });
+
+const render = () => {
+  exportsObj.populate();
+  imageBufferArray.set(memoryBufferArray.subarray(0, width * height));
+  ctx.putImageData(imageData, 0, 0);
+};
+
+const handleKeyDown = (event) => {
+  switch (event.key) {
+    case "ArrowUp":
+      exportsObj.translate(0, 1);
+      render();
+      break;
+    case "ArrowDown":
+      exportsObj.translate(0, -1);
+      render();
+      break;
+    case "ArrowLeft":
+      exportsObj.translate(-1, 0);
+      render();
+      break;
+    case "ArrowRight":
+      exportsObj.translate(1, 0);
+      render();
+      break;
+  }
+};
