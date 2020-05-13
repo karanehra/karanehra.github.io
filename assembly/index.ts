@@ -26,23 +26,22 @@ export function noisePerlin(a: i32, b: i32): i64 {
   return i64(((a1 + a2 + a3 + a4) / 4) * 0xffffffff) | 0xff000000;
 }
 
-function noise(x: i32, y: i32, s: i32 = 1): u32 {
+function noise(x: i32, y: i32, s: i32 = 1): f64 {
   NativeMath.seedRandom(
     (<u32>Math.floor(x / s) - 2) * 3888 +
       (<u32>Math.floor(y / s) - 9) * 433 +
       <u32>Math.floor(x / s) * <u32>Math.floor(y / s) * 900 * 11
   );
-  return (<u32>(NativeMath.random() * 0xffffffff)) | 0xff000000;
+  return NativeMath.random();
 }
 
 function overlappedNoise(x: i32, y: i32): u32 {
   let a1 = noise(x, y, 1);
-  let a2 = noise(x, y, 4);
+  let a2 = noise(x, y, 5);
   let a3 = noise(x, y, 10);
-  let a4 = noise(x, y, 5);
-  return <u32>((2 * a1 + a2 + a3 + a4) / 5) > 0x7fffffff
-    ? 0xffffffff
-    : 0xff000000;
+  let a4 = noise(x, y, 20);
+  let final = <u32>(((a3 * 5 + a1 * 20 + a2 * 10 + a4) / 36) * 0xffffffff);
+  return final > 1747483647 ? 0xffffffff : 0xff000000;
 }
 
 let width: i32, height: i32;
