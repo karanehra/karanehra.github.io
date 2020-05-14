@@ -84,3 +84,33 @@ function calculatePerlinValue(x: i32, y: i32): i32 {
 
   return <i32>(((s + t + u + v) / 4) * 1251231);
 }
+
+class TwoDArray<T> {
+  width: i32;
+  height: i32;
+  data: T[];
+  constructor(width: i32, height: i32) {
+    this.width = width;
+    this.height = height;
+    this.data = new Array<T>(width * height);
+  }
+
+  set(x: i32, y: i32, v: T): void {
+    this.data[x + y * this.width] = v;
+  }
+
+  get(x: i32, y: i32): T {
+    return this.data[x + y * this.width];
+  }
+}
+
+function randomizer() {
+  return Math.random() * 255;
+}
+
+function diamondSquare(size: u32): void {
+  size = size % 2 === 0 ? size + 1 : size;
+  let data = new TwoDArray<i32>(size, size);
+  data.set(0, 0, <i32>randomizer());
+  data.set(0, size - 1, <i32>randomizer());
+}
