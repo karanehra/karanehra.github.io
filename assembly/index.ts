@@ -1,31 +1,3 @@
-export function add(a: i32, b: i32): i32 {
-  return a + b;
-}
-
-function mult(a: number[], b: string[]): f64 {
-  let x1 = parseFloat(b[0]);
-  let y1 = parseFloat(b[1]);
-  return a[0] * (x1 - a[0]) + a[1] * (y1 - a[1]);
-}
-
-export function noisePerlin(a: i32, b: i32): i64 {
-  let pt0 = gradients[width * b + a].split("-");
-  let pt1 = gradients[width * b + a + 1].split("-");
-  let pt2 = gradients[width * (b + 1) + a].split("-");
-  let pt3 = gradients[width * (b + 1) + (a + 1)].split("-");
-  let center = [
-    parseFloat(pt0[0] + pt3[0]) / 2,
-    parseFloat(pt0[1] + pt3[1]) / 2,
-  ];
-  let a1 = mult(center, pt0);
-  let a2 = mult(center, pt1);
-  let a3 = mult(center, pt2);
-  let a4 = mult(center, pt3);
-
-  // return i64(NativeMath.random() * 0xffffffff) | 0xff000000;
-  return i64(((a1 + a2 + a3 + a4) / 4) * 0xffffffff) | 0xff000000;
-}
-
 function noise(x: i32, y: i32, s: i32 = 1): f64 {
   NativeMath.seedRandom(
     (<u32>Math.floor(x / s) - 2) * 3888 +
@@ -41,7 +13,7 @@ function overlappedNoise(x: i32, y: i32): u32 {
   let a3 = noise(x, y, 10);
   let a4 = noise(x, y, 20);
   let final = <u32>(((a3 * 5 + a1 * 20 + a2 * 10 + a4) / 36) * 0xffffffff);
-  return final > 1747483647 ? 0xffffffff : 0xff000000;
+  return final > 947483647 ? 0xff000000 : 0xffffffff;
 }
 
 let width: i32, height: i32;
@@ -52,6 +24,7 @@ export function init(w: i32, h: i32): void {
   height = h;
   offsetX = 0;
   offsetY = 0;
+  createPerlinGradients();
 }
 
 export function translate(x: i32, y: i32): void {
@@ -59,24 +32,55 @@ export function translate(x: i32, y: i32): void {
   offsetY += y;
 }
 
-let gradients = new Array<string>();
-
-function createPerlinGradients(): void {
-  gradients = new Array<string>(width * height);
-  for (let i = 0; i < gradients.length; i++) {
-    let x = Math.random();
-    let y = Math.random();
-    gradients[i] = `${x}-${y}`;
-  }
-}
-
 export function populate(): void {
   for (let i = 0; i < width; i++) {
     for (let j = 0; j < height; j++) {
       store<u32>(
         (i + j * width) << 2,
-        overlappedNoise(i + offsetX, j + offsetY)
+        calculatePerlinValue(i + offsetX, j + offsetY)
       );
     }
   }
+}
+
+let gradientsX: f32[];
+let gradientsY: f32[];
+
+function createPerlinGradients(): void {
+  gradientsX = new Array<f32>((width + 2) * (height + 2));
+  gradientsY = new Array<f32>((width + 2) * (height + 2));
+  for (let i = 0; i < gradientsX.length; i++) {
+    let x = Math.random();
+    let y = Math.random();
+    let mod = Math.sqrt(x * x + y * y);
+    gradientsX[i] = f32(x / mod);
+    gradientsY[i] = f32(y / mod);
+  }
+}
+
+function calculatePerlinValue(x: i32, y: i32): i32 {
+  let xs = new Array<f32>(4);
+  xs.push(gradientsX[x + y * width]);
+  xs.push(gradientsX[x + 1 + y * width]);
+  xs.push(gradientsX[x + (y + 1) * width]);
+  xs.push(gradientsX[x + 1 + (y + 1) * width]);
+
+  let ys = new Array<f32>(4);
+  ys.push(gradientsY[x + y * width]);
+  ys.push(gradientsY[x + 1 + y * width]);
+  ys.push(gradientsY[x + (y + 1) * width]);
+  ys.push(gradientsY[x + 1 + (y + 1) * width]);
+
+  let centerX = x + 0.5;
+  let centerY = y + 0.5;
+
+  let diffX = [0.5, -0.5, 0.5, -0.5];
+  let diffY = [0, 0.5, -0.5, -0.5];
+
+  let s = xs[0] * diffX[0] + ys[0] * diffY[0];
+  let t = xs[1] * diffX[1] + ys[1] * diffY[1];
+  let u = xs[2] * diffX[2] + ys[2] * diffY[2];
+  let v = xs[3] * diffX[3] + ys[3] * diffY[3];
+
+  return <i32>(((s + t + u + v) / 4) * 1251231);
 }
