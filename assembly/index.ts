@@ -4,7 +4,7 @@ let leaderPtsX: u32[];
 let leaderPtsY: u32[];
 let leaderPtsType: u32[];
 
-const VP_COUNT: u32 = 20;
+const VP_COUNT: u32 = 200;
 
 export function init(size: u32): void {
   totalSize = size;
@@ -27,7 +27,7 @@ function createVoronoiPoints(): void {
   for (let i: u32 = 0; i < VP_COUNT; i++) {
     let x = <u32>(Math.random() * totalSize);
     let y = <u32>(Math.random() * totalSize);
-    leaderPtsType.push(Math.random() > 0.5 ? 0xffffffff : 0xff00ff00);
+    leaderPtsType.push(Math.random() > 0.5 ? 0xffffffff : 0xff000000);
     leaderPtsX.push(x);
     leaderPtsY.push(y);
   }

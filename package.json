@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --use Math=JSMath --validate --sourceMap --debug --importMemory --memoryBase 8192",
+    "asbuild:untouched": "asc assembly/index.ts -b build/untouched.wasm -t build/untouched.wat --use Math=JSMath --validate --sourceMap --debug --importMemory --runtime half --memoryBase 2097152",
     "asbuild:optimized": "asc assembly/index.ts -b build/optimized.wasm -t build/optimized.wat --validate --sourceMap --optimize --importMemory",
     "asbuild": "npm run asbuild:untouched",
     "browserbuild": "browserify src/index.js -o build/bundle.js",
