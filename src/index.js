@@ -7,6 +7,7 @@ let totalPixelMemory = currentPaintMemory << 1;
 
 //>>>16 converts bytes to number of mempages of 64k each
 let wasmMemory = new WebAssembly.Memory({
+  // initial: 1000,
   initial: (3 * 1024 * 1024) >>> 16,
 });
 
@@ -30,15 +31,15 @@ WebAssembly.instantiateStreaming(
   importObject
 ).then((res) => {
   exportsObj = res.instance.exports;
-  console.log(exportsObj);
   res.instance.exports.init(512);
+  exportsObj.populate();
+  console.log(wasmMemory);
 
+  render();
   document.addEventListener("keydown", handleKeyDown);
-  setTimeout(() => render(), 2000);
 });
 
 const render = () => {
-  exportsObj.populate();
   imageBufferArray.set(memoryBufferArray.subarray(0, width * height));
   ctx.putImageData(imageData, 0, 0);
 };
