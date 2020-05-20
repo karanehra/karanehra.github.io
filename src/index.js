@@ -40,7 +40,7 @@ WebAssembly.instantiateStreaming(
 });
 
 const render = () => {
-  imageBufferArray.set(memoryBufferArray.subarray(0, width * height));
+  imageBufferArray.set(memoryBufferArray.subarray(0, 512 * 512));
   ctx.putImageData(imageData, 0, 0);
 };
 
