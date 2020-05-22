@@ -7,7 +7,6 @@ let totalPixelMemory = currentPaintMemory << 1;
 
 //>>>16 converts bytes to number of mempages of 64k each
 let wasmMemory = new WebAssembly.Memory({
-  // initial: 1000,
   initial: (3 * 1024 * 1024) >>> 16,
 });
 
