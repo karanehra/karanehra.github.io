@@ -1,6 +1,7 @@
 import Badge from "./components/Badge";
 import BgColorSpan from "./components/BgColorSpan";
 import BgColorText from "./components/BgColorText";
+import Divider from "./components/Divider";
 import Layout from "./components/Layout";
 
 const Projects = () => {
@@ -32,7 +33,7 @@ const Projects = () => {
         ! (it's a mess of unfinished projects but a lot of exploration)
       </p>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         Asli ID Skills Backend
@@ -45,7 +46,7 @@ const Projects = () => {
         <Badge type="typescript" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         Asli ID Skills App
@@ -58,7 +59,7 @@ const Projects = () => {
         <Badge type="storybook" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         Tophatter Common
@@ -69,7 +70,7 @@ const Projects = () => {
         <Badge type="rollup" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         Tophatter Mobile App
@@ -79,7 +80,7 @@ const Projects = () => {
         <Badge type="typescript" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         InstaPRL Onboarding
@@ -93,7 +94,7 @@ const Projects = () => {
         <Badge type="redux" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         InstaPRL Onboarding
@@ -107,7 +108,7 @@ const Projects = () => {
         <Badge type="redux" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         InstaPRL Scrutiny
@@ -121,7 +122,7 @@ const Projects = () => {
         <Badge type="redux" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         InstaPRL Candidate Portal
@@ -133,7 +134,7 @@ const Projects = () => {
         <Badge type="webpack" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         InstaPRL Admin
@@ -148,7 +149,7 @@ const Projects = () => {
         <Badge type="chartjs" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         InstaPRL Reports
@@ -159,7 +160,7 @@ const Projects = () => {
         <Badge type="python" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">Bifrost</BgColorText>
       <div className="flex gap-1 flex-wrap">
@@ -170,7 +171,7 @@ const Projects = () => {
         <Badge type="nodejs" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">VCall Vault</BgColorText>
       <div className="flex gap-1 flex-wrap">
@@ -182,7 +183,7 @@ const Projects = () => {
         <Badge type="redux" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">
         Rider Renewal
@@ -195,7 +196,7 @@ const Projects = () => {
         <Badge type="mongo" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl mb-4 font-bold">PASA</BgColorText>
       <div className="flex gap-1 flex-wrap">
@@ -208,7 +209,7 @@ const Projects = () => {
         <Badge type="mui" />
       </div>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
     </Layout>
   );
 };

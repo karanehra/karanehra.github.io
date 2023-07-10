@@ -1,5 +1,6 @@
 import BgColorSpan from "./components/BgColorSpan";
 import BgColorText from "./components/BgColorText";
+import Divider from "./components/Divider";
 import Layout from "./components/Layout";
 
 const Careeer = () => {
@@ -13,7 +14,7 @@ const Careeer = () => {
         learn new things and experiment with the latest technologies
       </p>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl text-primary font-black">
         Affinidi India
@@ -71,12 +72,14 @@ const Careeer = () => {
         </li>
       </ul>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl text-primary font-black">
         Tophatter
       </BgColorText>
-      <h3 className="text-xl text-primary font-bold">Software Development Engineer 2</h3>
+      <h3 className="text-xl text-primary font-bold">
+        Software Development Engineer 2
+      </h3>
       <h3 className="text-xs text-primary mb-2">September 21 - November 22</h3>
 
       <ul className="list-inside list-disc">
@@ -132,12 +135,14 @@ const Careeer = () => {
         </li>
       </ul>
 
-      <hr className="my-4 text-primary" />
+      <Divider />
 
       <BgColorText className="text-3xl text-primary font-black">
         HDFC Life
       </BgColorText>
-      <h3 className="text-xl text-primary font-bold">Senior Software Engineer</h3>
+      <h3 className="text-xl text-primary font-bold">
+        Senior Software Engineer
+      </h3>
       <h3 className="text-xs text-primary mb-2">July 19 - September 21</h3>
 
       <ul className="list-disc list-inside">
@@ -179,7 +184,7 @@ const Careeer = () => {
         </li>
       </ul>
 
-      <hr className="my-4 mb-10 text-primary" />
+      <Divider />
     </Layout>
   );
 };
