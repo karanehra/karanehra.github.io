@@ -13,13 +13,15 @@ const Home = () => {
 
   return (
     <Layout>
-      <h1 className="text-8xl font-black text-primary mb-5">Hello!</h1>
-      <h1 className="text-9xl font-black text-primary mb-10">
-        I'm <span className="bg-primary text-secondary px-10">Karan</span>.
+      <h1 className="font-black text-primary text-3xl mb-3 md:text-8xl md:mb-5">
+        Hello!
+      </h1>
+      <h1 className="font-black text-primary text-6xl mb-4 md:text-9xl md:mb-10">
+        I'm <span className="bg-primary text-secondary md:px-10">Karan</span>.
       </h1>
       <div className="grow">
         <span
-          className="text-7xl font-black bg-primary text-secondary mb-5 px-4"
+          className="font-black bg-primary text-secondary text-3xl md:mb-5 md:px-4 md:text-7xl"
           onClick={() => setActiveTrait((activeTrait + 1) % 5)}
         >
           {traits[activeTrait]}
