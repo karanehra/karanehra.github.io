@@ -17,10 +17,35 @@ const Careeer = () => {
       <Divider />
 
       <BgColorText className="text-3xl text-primary font-black">
+        Celigo
+      </BgColorText>
+      <h3 className="text-xl text-primary font-bold">
+        Senior Backend Engineer
+      </h3>
+      <h3 className="text-xs text-primary mb-2">July '23 - Current</h3>
+
+      <ul className="list-inside list-disc">
+        <li className="text-primary text-sm">
+          Working on{" "}
+          <a
+            href="https://integrator.io"
+            className="underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            integrator.io
+          </a>{" "}
+          and related services
+        </li>
+      </ul>
+
+      <Divider />
+
+      <BgColorText className="text-3xl text-primary font-black">
         Affinidi India
       </BgColorText>
       <h3 className="text-xl text-primary font-bold">Full Stack Engineer</h3>
-      <h3 className="text-xs text-primary mb-2">November 22 - Current</h3>
+      <h3 className="text-xs text-primary mb-2">November '22 - July '23</h3>
 
       <ul className="list-inside list-disc">
         <li className="text-primary text-sm">
@@ -80,7 +105,9 @@ const Careeer = () => {
       <h3 className="text-xl text-primary font-bold">
         Software Development Engineer 2
       </h3>
-      <h3 className="text-xs text-primary mb-2">September 21 - November 22</h3>
+      <h3 className="text-xs text-primary mb-2">
+        September '21 - November '22
+      </h3>
 
       <ul className="list-inside list-disc">
         <li className="text-primary text-sm">
@@ -143,7 +170,7 @@ const Careeer = () => {
       <h3 className="text-xl text-primary font-bold">
         Senior Software Engineer
       </h3>
-      <h3 className="text-xs text-primary mb-2">July 19 - September 21</h3>
+      <h3 className="text-xs text-primary mb-2">July '19 - September '21</h3>
 
       <ul className="list-disc list-inside">
         <li className="text-primary text-sm">

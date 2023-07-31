@@ -12,6 +12,7 @@ import {
 import Home from "./Home";
 import Projects from "./Projects";
 import Careeer from "./Career";
+import HomeServer from "./Homeserver";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: "/career",
     element: <Careeer />,
+  },
+  {
+    path: "/homeserver",
+    element: <HomeServer />,
   },
 ]);
 
