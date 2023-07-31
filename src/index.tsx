@@ -3,16 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
-import {
-  createBrowserRouter,
-  Link,
-  RouterProvider,
-  useNavigate,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Home";
 import Projects from "./Projects";
 import Careeer from "./Career";
 import HomeServer from "./Homeserver";
+import DevLogs from "./DevLogs";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +26,14 @@ const router = createBrowserRouter([
   {
     path: "/homeserver",
     element: <HomeServer />,
+  },
+  {
+    path: "/devlogs",
+    element: <DevLogs />,
+  },
+  {
+    path: "/devlogs/:id",
+    element: <DevLogs />,
   },
 ]);
 

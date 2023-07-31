@@ -8,7 +8,7 @@ const Layout = (props: PropsWithChildren) => {
       style={{ height: "100svh" }}
     >
       <Navbar />
-      <div className="mx-auto flex flex-col mt-16 px-4 pb-4 grow md:px-0 md:mt-32 md:w-2/3">
+      <div className="mx-auto flex flex-col mt-16 px-4 pb-4 xs:grow md:grow-0 md:px-0 md:mt-32 md:w-2/3">
         {props.children}
       </div>
     </div>
