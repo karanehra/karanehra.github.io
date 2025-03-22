@@ -5,6 +5,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { BlogPost } from "@/lib/blog";
+import Head from "next/head";
 
 type Props = {
   post: BlogPost;
@@ -13,14 +14,19 @@ type Props = {
 
 export default function BlogPostPage({ post, htmlContent }: Props) {
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-mono font-semibold mb-2">{post.title}</h1>
-      <p className="text-sm font-mono text-gray-500">{post.date}</p>
-      <div
-        className="mt-6 font-mono text-base leading-relaxed prose prose-invert"
-        dangerouslySetInnerHTML={{ __html: htmlContent }}
-      />
-    </div>
+    <>
+      <Head>
+        <title>{post.title} | My Blog</title>
+      </Head>
+      <div className="p-6">
+        <h1 className="text-2xl font-mono font-semibold mb-2">{post.title}</h1>
+        <p className="text-sm font-mono text-gray-500">{post.date}</p>
+        <div
+          className="mt-6 font-mono text-base leading-relaxed prose prose-invert"
+          dangerouslySetInnerHTML={{ __html: htmlContent }}
+        />
+      </div>
+    </>
   );
 }
 

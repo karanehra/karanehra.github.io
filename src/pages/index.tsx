@@ -1,8 +1,12 @@
 import ExternalLink from "@/components/ExternalLink";
+import Head from "next/head";
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>Karan Nehra</title>
+      </Head>
       <h2 className="font-mono font-semibold text-xl">Hello! I am Karan.</h2>
       <br />
       <p className="font-mono font-light">
@@ -30,11 +34,14 @@ export default function Home() {
       </p>
       <br />
       <p className="font-mono font-light">
-        Although I have been primarily working with the Mongo/Express/React/Node
-        stack for a majority of my career, I would consider myself a{" "}
-        <span className="font-semibold">Framework Agnostic Engineer</span>. I
-        have dabbled with Django/Python, Ruby on Rails, Golang and some Rust
-        too, in addition to countless number of Javascript Frameworks.
+        Find me on{" "}
+        <ExternalLink href="https://www.linkedin.com/in/karanehra/">
+          LinkedIn
+        </ExternalLink>{" "}
+        and{" "}
+        <ExternalLink href="https://leetcode.com/u/karanehra/">
+          LeetCode
+        </ExternalLink>
       </p>
     </>
   );

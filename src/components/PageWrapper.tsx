@@ -8,7 +8,7 @@ export default function PageWrapper({ children }: { children: ReactNode }) {
   return (
     <div
       className={`min-h-screen transition-colors duration-300 ${
-        isDarkMode ? "bg-black text-white" : "bg-white text-black"
+        isDarkMode ? "bg-zinc-900 text-zinc-100" : "bg-white text-black"
       }`}
     >
       <div className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 py-8">

@@ -1,6 +1,11 @@
+import Head from "next/head";
+
 export default function Career() {
   return (
     <>
+      <Head>
+        <title>Karan Nehra - Career</title>
+      </Head>
       <h2 className="font-mono font-semibold text-xl">Career</h2>
       <br />
       <p className="font-mono font-light">
